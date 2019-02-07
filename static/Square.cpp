@@ -28,4 +28,12 @@ namespace base {
 		return false;
 	}
 
+    std::string Square::GetAttributeString() const{
+        std::string str="";
+        for (auto& attr : attributes_) {
+            str += attr.GetType();
+        }
+        return str;
+    }
+
 }

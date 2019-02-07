@@ -7,6 +7,7 @@
 
 #include "../graphics/GridBoardGUI.h"
 #include "../static/GridBoard.h"
+#include "../static/Attribute.h"
 
 namespace Ui {
 class MainWindow;

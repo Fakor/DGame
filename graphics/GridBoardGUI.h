@@ -7,11 +7,11 @@
 #include <QtMath>
 
 #include "../static/GridBoard.h"
+#include "SquareGUI.h"
 
 namespace graphic {
 
     class GridboardGUI: public QWidget
-	//class GridboardGUI : public QWidget
 	{
 		Q_OBJECT
 	public:

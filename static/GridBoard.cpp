@@ -1,7 +1,7 @@
 #include "GridBoard.h"
 
 namespace base {
-	GridBoard::GridBoard(int width, int height)
+    GridBoard::GridBoard(uint16_t width, uint16_t height)
 		: width_{ width }, height_{height}
 	{
 		squares_.resize(width_*height_);
@@ -12,11 +12,17 @@ namespace base {
 	{
 	}
 
-	void GridBoard::SetSquareAttribute(int x, int y, Attribute attribute) {
+    void GridBoard::SetSquareAttribute(uint16_t x, uint16_t y, Attribute attribute) {
 		GetSquare(x, y).SetAttributes({ attribute });
 	}
 
-	bool GridBoard::SquareHaveAttribute(int x, int y, Attribute attribute) {
+    void GridBoard::SetAllSquareAttribute(Attribute attribute){
+        for(auto& square: squares_){
+            square.SetAttributes({attribute});
+        }
+    }
+
+    bool GridBoard::SquareHaveAttribute(uint16_t x, uint16_t y, Attribute attribute) {
 		return GetSquare(x, y).HaveAttribute(attribute);
 	}
 
@@ -28,7 +34,7 @@ namespace base {
 		return height_;
 	}
 
-	Square& GridBoard::GetSquare(int x, int y) {
+    Square& GridBoard::GetSquare(uint16_t x, uint16_t y) {
 		return squares_[y*width_ + x];
 	}
 }

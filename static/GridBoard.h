@@ -10,21 +10,24 @@ namespace base {
 	class GridBoard
 	{
 	public:
-		GridBoard(int width, int height);
+        GridBoard(uint16_t width, uint16_t height);
 		virtual ~GridBoard();
 
-		void SetSquareAttribute(int x, int y, Attribute attribute);
-		bool SquareHaveAttribute(int x, int y, Attribute attribute);
+        void SetSquareAttribute(uint16_t x, uint16_t y, Attribute attribute);
+        bool SquareHaveAttribute(uint16_t x, uint16_t y, Attribute attribute);
+        void SetAllSquareAttribute(Attribute attribute);
+
+        Square& GetSquare(uint16_t x, uint16_t y);
 
 		int GetWidth() const;
 		int GetHeight() const;
 	private:
-		int width_;
-		int height_;
+        uint16_t width_;
+        uint16_t height_;
 
 		std::vector<Square> squares_;
 
-		Square& GetSquare(int x, int y);
+
 	};
 
 }
