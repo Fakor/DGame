@@ -18,6 +18,7 @@ namespace base {
         void SetAllSquareAttribute(Attribute attribute);
 
         Square& GetSquare(uint16_t x, uint16_t y);
+        const std::vector<Square>& GetAllSquares() const;
 
 		int GetWidth() const;
 		int GetHeight() const;

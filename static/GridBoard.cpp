@@ -37,4 +37,8 @@ namespace base {
     Square& GridBoard::GetSquare(uint16_t x, uint16_t y) {
 		return squares_[y*width_ + x];
 	}
+
+    const std::vector<Square>& GridBoard::GetAllSquares() const{
+        return squares_;
+    }
 }

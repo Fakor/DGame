@@ -2,6 +2,7 @@
 #define SQUAREGUI_H
 
 #include <QLabel>
+#include <QDebug>
 
 #include <../static/Square.h>
 
@@ -11,9 +12,10 @@ namespace graphic {
         Q_OBJECT
     public:
         SquareGUI(base::Square& square, QSize _size);
-
+    public slots:
+        void Update();
     private:
-        base::Square square_;
+        base::Square& square_;
     };
 
 }

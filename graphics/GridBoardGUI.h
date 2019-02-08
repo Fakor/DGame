@@ -15,10 +15,14 @@ namespace graphic {
 	{
 		Q_OBJECT
 	public:
-        GridboardGUI(base::GridBoard* board, QSize board_size, QWidget* parent);
+        GridboardGUI(base::GridBoard& board, QSize board_size, QWidget* parent);
 
+    public slots:
+        void UpdateBoard();
+    signals:
+        void SquareUpdate();
 	private:
-		base::GridBoard* board_;
+        base::GridBoard& board_;
 	};
 
 }

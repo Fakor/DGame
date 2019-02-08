@@ -6,9 +6,12 @@ namespace  graphic{
         :square_{square}
     {
         setFixedSize(_size);
-        setText(QString::fromStdString(square.GetAttributeString()));
         setFrameStyle(QFrame::Panel | QFrame::Plain);
         setLineWidth(2);
         setAlignment(Qt::AlignCenter);
+    }
+
+    void SquareGUI::Update(){
+        setText(QString::fromStdString(square_.GetAttributeString()));
     }
 }

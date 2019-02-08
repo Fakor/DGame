@@ -11,9 +11,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     board_.SetAllSquareAttribute(EMPTY);
 
-    graphic::GridboardGUI* board_g = new graphic::GridboardGUI(&board_, size(), this);
+    graphic::GridboardGUI* board_g = new graphic::GridboardGUI(board_, size(), this);
 
     layout->addWidget(board_g);
+
+    board_g->UpdateBoard();
 }
 
 
