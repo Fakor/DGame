@@ -2,18 +2,16 @@
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    :QMainWindow{parent}
+    :QMainWindow{parent}, board_{16, 16}
 {
     setFixedSize(500, 500);
     QVBoxLayout* layout = new QVBoxLayout;
 
     base::GridBoard board{16, 16};
 
-    base::Attribute empty(".");
+    board_.SetAllSquareAttribute(EMPTY);
 
-    board.SetAllSquareAttribute(empty);
-
-    graphic::GridboardGUI* board_g = new graphic::GridboardGUI(&board, size(), this);
+    graphic::GridboardGUI* board_g = new graphic::GridboardGUI(&board_, size(), this);
 
     layout->addWidget(board_g);
 }

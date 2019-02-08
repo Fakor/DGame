@@ -13,6 +13,9 @@ namespace Ui {
 class MainWindow;
 }
 
+const base::Attribute EMPTY(".");
+const base::Attribute WALL("x");
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -23,6 +26,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    base::GridBoard board_;
 };
 
 #endif // MAINWINDOW_H
