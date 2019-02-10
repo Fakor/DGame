@@ -12,8 +12,8 @@ namespace base {
 	{
 	}
 
-    void GridBoard::SetSquareAttribute(uint16_t x, uint16_t y, Attribute attribute) {
-		GetSquare(x, y).SetAttributes({ attribute });
+    void GridBoard::SetSquareAttribute(Position pos, Attribute attribute) {
+        GetSquare(pos).SetAttributes({ attribute });
 	}
 
     void GridBoard::SetAllSquareAttribute(Attribute attribute){
@@ -22,8 +22,8 @@ namespace base {
         }
     }
 
-    bool GridBoard::SquareHaveAttribute(uint16_t x, uint16_t y, Attribute attribute) {
-		return GetSquare(x, y).HaveAttribute(attribute);
+    bool GridBoard::SquareHaveAttribute(Position pos, Attribute attribute) {
+        return GetSquare(pos).HaveAttribute(attribute);
 	}
 
 	int GridBoard::GetWidth() const {
@@ -34,8 +34,8 @@ namespace base {
 		return height_;
 	}
 
-    Square& GridBoard::GetSquare(uint16_t x, uint16_t y) {
-		return squares_[y*width_ + x];
+    Square& GridBoard::GetSquare(Position pos) {
+        return squares_[pos.Y()*width_ + pos.X()];
 	}
 
     const std::vector<Square>& GridBoard::GetAllSquares() const{

@@ -24,12 +24,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Square.cpp \
     GridBoard.cpp \
-    Attribute.cpp
+    Attribute.cpp \
+    position.cpp
 
 HEADERS += \
     Square.h \
     GridBoard.h \
-    Attribute.h
+    Attribute.h \
+    position.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

@@ -4,6 +4,7 @@
 
 #include "Attribute.h"
 #include "Square.h"
+#include "position.h"
 
 namespace base {
 
@@ -13,11 +14,11 @@ namespace base {
         GridBoard(uint16_t width, uint16_t height);
 		virtual ~GridBoard();
 
-        void SetSquareAttribute(uint16_t x, uint16_t y, Attribute attribute);
-        bool SquareHaveAttribute(uint16_t x, uint16_t y, Attribute attribute);
+        void SetSquareAttribute(Position pos, Attribute attribute);
+        bool SquareHaveAttribute(Position pos, Attribute attribute);
         void SetAllSquareAttribute(Attribute attribute);
 
-        Square& GetSquare(uint16_t x, uint16_t y);
+        Square& GetSquare(Position pos);
         const std::vector<Square>& GetAllSquares() const;
 
 		int GetWidth() const;

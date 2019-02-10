@@ -16,7 +16,7 @@ namespace graphic {
 
         for (uint16_t i = 0; i < board_.GetWidth(); ++i) {
             for (uint16_t j = 0; j < board.GetHeight(); ++j) {
-                SquareGUI* square = new SquareGUI(board.GetSquare(i, j), square_size);
+                SquareGUI* square = new SquareGUI(board.GetSquare({i, j}), square_size);
                 layout->addWidget(square, i, j);
                 connect(this, SIGNAL(SquareUpdate()), square, SLOT(Update()));
 			}
