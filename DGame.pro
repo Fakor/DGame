@@ -3,4 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     static \
     graphics \
-    LightRiders
+    LightRiders \
+    test
