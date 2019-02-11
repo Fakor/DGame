@@ -25,13 +25,15 @@ SOURCES += \
     Square.cpp \
     GridBoard.cpp \
     Attribute.cpp \
-    position.cpp
+    position.cpp \
+    Piece.cpp
 
 HEADERS += \
     Square.h \
     GridBoard.h \
     Attribute.h \
-    position.h
+    position.h \
+    Piece.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

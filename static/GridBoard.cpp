@@ -38,6 +38,10 @@ namespace base {
         return squares_[pos.Y()*width_ + pos.X()];
 	}
 
+    Square* GridBoard::GetSquarePtr(Position pos) {
+        return &GetSquare(pos);
+    }
+
     const std::vector<Square>& GridBoard::GetAllSquares() const{
         return squares_;
     }

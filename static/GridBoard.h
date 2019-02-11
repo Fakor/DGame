@@ -19,6 +19,7 @@ namespace base {
         void SetAllSquareAttribute(Attribute attribute);
 
         Square& GetSquare(Position pos);
+        Square* GetSquarePtr(Position pos);
         const std::vector<Square>& GetAllSquares() const;
 
 		int GetWidth() const;
