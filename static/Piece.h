@@ -11,6 +11,7 @@ namespace base{
     public:
         Piece(Attribute attribute, Position start_pos, GridBoard* board);
 
+        void Move(Position new_pos);
     private:
         Attribute attribute_;
         GridBoard* board_;

@@ -8,7 +8,7 @@
 
 using namespace testing;
 
-TEST(PieceTests, Initialize)
+TEST(PieceTests, Move)
 {
     base::GridBoard board(2,2);
 
@@ -20,5 +20,13 @@ TEST(PieceTests, Initialize)
     ASSERT_TRUE(board.SquareHaveAttribute({0,1}, attr));
     ASSERT_FALSE(board.SquareHaveAttribute({1,0}, attr));
     ASSERT_FALSE(board.SquareHaveAttribute({1,1}, attr));
+
+    piece1.Move({1,0});
+
+    ASSERT_FALSE(board.SquareHaveAttribute({0,0}, attr));
+    ASSERT_FALSE(board.SquareHaveAttribute({0,1}, attr));
+    ASSERT_TRUE(board.SquareHaveAttribute({1,0}, attr));
+    ASSERT_FALSE(board.SquareHaveAttribute({1,1}, attr));
+
 }
 

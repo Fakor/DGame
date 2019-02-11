@@ -15,6 +15,7 @@ namespace base {
 		virtual ~Square();
 
 		void AddAttribute(Attribute attribute);
+        void RemoveAttribute(Attribute attribute);
 		void SetAttributes(std::initializer_list<Attribute> attributes);
 
 		bool HaveAttribute(const Attribute& attribute) const;

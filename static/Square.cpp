@@ -15,6 +15,15 @@ namespace base {
 		attributes_.push_back(attribute);
 	}
 
+    void Square::RemoveAttribute(Attribute attribute){
+        for (auto it = attributes_.begin(); it != attributes_.end(); ++it) {
+            if(it->SameAttribute(attribute)){
+                attributes_.erase(it);
+                return;
+            }
+        }
+    }
+
 	void Square::SetAttributes(std::initializer_list<Attribute> attributes) {
 		attributes_.assign(attributes.begin(), attributes.end());
 	}

@@ -11,4 +11,11 @@ namespace base {
         square_ = board_->GetSquarePtr(pos);
         square_->AddAttribute(attribute_);
     }
+
+    void Piece::Move(Position new_pos){
+        if(square_ != nullptr){
+            square_->RemoveAttribute(attribute_);
+        }
+        SetPosition(new_pos);
+    }
 }
