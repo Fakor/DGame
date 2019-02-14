@@ -1,4 +1,4 @@
-#include "tst_piecetest.h"
+#include "tst_boardtest.h"
 
 #include <gtest/gtest.h>
 

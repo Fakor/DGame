@@ -5,14 +5,17 @@
 #include <initializer_list>
 
 #include "Attribute.h"
+#include "position.h"
 
 namespace base {
 
 	class Square
 	{
 	public:
-		Square();
-		virtual ~Square();
+        Square(Position pos);
+        virtual ~Square();
+
+        Position GetPosition() const;
 
 		void AddAttribute(Attribute attribute);
         void RemoveAttribute(Attribute attribute);
@@ -22,6 +25,7 @@ namespace base {
         std::string GetAttributeString() const;
 	private:
 		std::vector<Attribute> attributes_;
+        Position pos_;
 	};
 
 }

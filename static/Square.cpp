@@ -2,7 +2,8 @@
 
 namespace base {
 
-	Square::Square()
+    Square::Square(Position pos)
+        : pos_{pos}
 	{
 	}
 
@@ -10,6 +11,10 @@ namespace base {
 	Square::~Square()
 	{
 	}
+
+    Position Square::GetPosition() const{
+        return pos_;
+    }
 
 	void Square::AddAttribute(Attribute attribute) {
 		attributes_.push_back(attribute);

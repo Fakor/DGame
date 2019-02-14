@@ -4,7 +4,11 @@ namespace base {
     GridBoard::GridBoard(uint16_t width, uint16_t height)
 		: width_{ width }, height_{height}
 	{
-		squares_.resize(width_*height_);
+        for(uint16_t y = 0; y < height; ++y){
+            for(uint16_t x = 0; x < width_; ++x){
+                squares_.emplace_back(Square({x,y}));
+            }
+        }
 	}
 
 

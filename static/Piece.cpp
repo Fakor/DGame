@@ -12,10 +12,15 @@ namespace base {
         square_->AddAttribute(attribute_);
     }
 
+    void Piece::AddMoveRule(base::Rule* rule){
+        rules_.push_back(rule);
+    }
+
     void Piece::Move(Position new_pos){
         if(square_ != nullptr){
             square_->RemoveAttribute(attribute_);
         }
         SetPosition(new_pos);
     }
+
 }

@@ -10,6 +10,8 @@ TARGET = static
 TEMPLATE = lib
 CONFIG += staticlib
 
+QMAKE_CXXFLAGS += -std=c++17
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -26,14 +28,17 @@ SOURCES += \
     GridBoard.cpp \
     Attribute.cpp \
     position.cpp \
-    Piece.cpp
+    Piece.cpp \
+    moveup.cpp
 
 HEADERS += \
     Square.h \
     GridBoard.h \
     Attribute.h \
     position.h \
-    Piece.h
+    Piece.h \
+    moveup.h \
+    Rule.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
