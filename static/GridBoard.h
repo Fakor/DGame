@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <stdexcept>
+#include <string>
 
 #include "Attribute.h"
 #include "Square.h"
@@ -14,12 +16,12 @@ namespace base {
         GridBoard(uint16_t width, uint16_t height);
 		virtual ~GridBoard();
 
-        void SetSquareAttribute(Position pos, Attribute attribute);
-        bool SquareHaveAttribute(Position pos, Attribute attribute);
+        void SetSquareAttribute(const Position& pos, Attribute attribute);
+        bool SquareHaveAttribute(const Position& pos, Attribute attribute);
         void SetAllSquareAttribute(Attribute attribute);
 
-        Square& GetSquare(Position pos);
-        Square* GetSquarePtr(Position pos);
+        Square& GetSquare(const Position& pos);
+        Square* GetSquarePtr(const Position& pos);
         const std::vector<Square>& GetAllSquares() const;
 
 		int GetWidth() const;
@@ -30,7 +32,8 @@ namespace base {
 
 		std::vector<Square> squares_;
 
-
+        Square* GetSquarePtrUnsfafe(const Position& pos);
+        void PositionWithinBoard(const Position& pos);
 	};
 
 }

@@ -53,11 +53,11 @@ TEST(BoardTests, MovePiece)
 TEST(BoardTests, ActionMoveUp){
     base::GridBoard board(2,5);
 
-    rules::MoveUp moveup3(3);
+    rules::MoveUp moveup(4);
 
-    base::PossibleMoves actual_possible_moves = moveup3.GetPossibleMoves({0,3}, board);
+    base::PossibleMoves actual_possible_moves = moveup.GetPossibleMoves({0,1}, board);
 
-    std::vector<base::Position> expected_possible_moves({{0,2},{0,1},{0,0}});
+    std::vector<base::Position> expected_possible_moves({{0,2},{0,3},{0,4}});
 
     ASSERT_EQ(expected_possible_moves.size(), actual_possible_moves.size());
     for(auto possible_move: actual_possible_moves){

@@ -16,8 +16,9 @@ namespace base {
 	{
 	}
 
-    void GridBoard::SetSquareAttribute(Position pos, Attribute attribute) {
-        GetSquare(pos).SetAttributes({ attribute });
+    void GridBoard::SetSquareAttribute(const Position& pos, Attribute attribute) {
+        PositionWithinBoard(pos);
+        GetSquarePtrUnsfafe(pos)->SetAttributes({ attribute });
 	}
 
     void GridBoard::SetAllSquareAttribute(Attribute attribute){
@@ -26,8 +27,9 @@ namespace base {
         }
     }
 
-    bool GridBoard::SquareHaveAttribute(Position pos, Attribute attribute) {
-        return GetSquare(pos).HaveAttribute(attribute);
+    bool GridBoard::SquareHaveAttribute(const Position& pos, Attribute attribute) {
+        PositionWithinBoard(pos);
+        return GetSquarePtrUnsfafe(pos)->HaveAttribute(attribute);
 	}
 
 	int GridBoard::GetWidth() const {
@@ -38,15 +40,29 @@ namespace base {
 		return height_;
 	}
 
-    Square& GridBoard::GetSquare(Position pos) {
-        return squares_[pos.Y()*width_ + pos.X()];
-	}
+    Square& GridBoard::GetSquare(const Position& pos) {
+        PositionWithinBoard(pos);
+        return *GetSquarePtrUnsfafe(pos);
+    }
 
-    Square* GridBoard::GetSquarePtr(Position pos) {
-        return &GetSquare(pos);
+    Square* GridBoard::GetSquarePtr(const Position& pos) {
+        PositionWithinBoard(pos);
+        return GetSquarePtrUnsfafe(pos);
     }
 
     const std::vector<Square>& GridBoard::GetAllSquares() const{
         return squares_;
+    }
+
+    Square* GridBoard::GetSquarePtrUnsfafe(const Position& pos){
+        return &squares_[pos.Y()*width_ + pos.X()];
+    }
+
+    void GridBoard::PositionWithinBoard(const Position &pos){
+        if((pos.X() >= width_) || (pos.Y() >= height_)){
+            std::string error = "Position: " + std::to_string(pos.X()) + ", " +
+                                std::to_string(pos.Y()) + " is not a valid within board.";
+            throw std::invalid_argument(error);
+        }
     }
 }
