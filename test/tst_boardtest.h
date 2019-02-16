@@ -11,6 +11,7 @@
 
 #include "../static/moveup.h"
 #include "../static/MoveRight.h"
+#include "../static/MoveLeft.h"
 
 using namespace testing;
 
@@ -76,6 +77,23 @@ TEST(BoardTests, ActionMoveRight){
     base::PossibleMoves actual_possible_moves = move.GetPossibleMoves({1,2}, board);
 
     std::vector<base::Position> expected_possible_moves({{2,2}});
+
+    ASSERT_EQ(expected_possible_moves.size(), actual_possible_moves.size());
+    for(auto possible_move: actual_possible_moves){
+        auto result = std::find(expected_possible_moves.begin(), expected_possible_moves.end(), possible_move->GetPosition());
+
+        EXPECT_NE(result, expected_possible_moves.end()) << "This move was not expected (" << possible_move->GetPosition().X() << ", " << possible_move->GetPosition().Y() << ")";
+    }
+}
+
+TEST(BoardTests, ActionMoveLeft){
+    base::GridBoard board(5,5);
+
+    rules::MoveLeft move(3);
+
+    base::PossibleMoves actual_possible_moves = move.GetPossibleMoves({3,2}, board);
+
+    std::vector<base::Position> expected_possible_moves({{2,2}, {1,2}, {0,2}});
 
     ASSERT_EQ(expected_possible_moves.size(), actual_possible_moves.size());
     for(auto possible_move: actual_possible_moves){
