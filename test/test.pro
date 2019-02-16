@@ -7,10 +7,10 @@ CONFIG += thread
 CONFIG -= qt
 
 HEADERS += \
-    tst_boardtest.h
+    tst_boardtest.h \
 
 SOURCES += \
-        main.cpp
+        main.cpp \
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../static/release/ -lstatic
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../static/debug/ -lstatic
