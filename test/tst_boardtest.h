@@ -63,7 +63,7 @@ TEST(BoardTests, ActionMoveUp){
     for(auto possible_move: actual_possible_moves){
         auto result = std::find(expected_possible_moves.begin(), expected_possible_moves.end(), possible_move->GetPosition());
 
-        EXPECT_NE(result, expected_possible_moves.end()) << possible_move->GetPosition().X() << " " << possible_move->GetPosition().Y() ;
+        EXPECT_NE(result, expected_possible_moves.end()) << "This move was not expected (" << possible_move->GetPosition().X() << ", " << possible_move->GetPosition().Y() << ")";
     }
 }
 
