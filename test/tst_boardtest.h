@@ -10,10 +10,7 @@
 #include "../static/Piece.h"
 #include "../static/direction.h"
 
-#include "../static/moveup.h"
-#include "../static/MoveRight.h"
-#include "../static/MoveLeft.h"
-#include "../static/MoveDown.h"
+#include "../static/Move.h"
 
 using namespace testing;
 
@@ -57,7 +54,7 @@ TEST(BoardTests, MovePiece)
 TEST(BoardTests, ActionMoveUp){
     base::GridBoard board(2,5);
 
-    rules::MoveUp move(4);
+    rules::Move move(4, {base::direction::Up});
 
     base::PossibleMoves actual_possible_moves = move.GetPossibleMoves({0,1}, board);
 
@@ -74,7 +71,7 @@ TEST(BoardTests, ActionMoveUp){
 TEST(BoardTests, ActionMoveRight){
     base::GridBoard board(5,5);
 
-    rules::MoveRight move(1);
+    rules::Move move(1, {base::direction::Right});
 
     base::PossibleMoves actual_possible_moves = move.GetPossibleMoves({1,2}, board);
 
@@ -91,7 +88,7 @@ TEST(BoardTests, ActionMoveRight){
 TEST(BoardTests, ActionMoveLeft){
     base::GridBoard board(5,5);
 
-    rules::MoveLeft move(3);
+    rules::Move move(3, {base::direction::Left});
 
     base::PossibleMoves actual_possible_moves = move.GetPossibleMoves({3,2}, board);
 
@@ -108,7 +105,7 @@ TEST(BoardTests, ActionMoveLeft){
 TEST(BoardTests, ActionMoveDown){
     base::GridBoard board(5,5);
 
-    rules::MoveDown move(3);
+    rules::Move move(3, {base::direction::Down});
 
     base::PossibleMoves actual_possible_moves = move.GetPossibleMoves({3,2}, board);
 

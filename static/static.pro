@@ -29,10 +29,7 @@ SOURCES += \
     Attribute.cpp \
     position.cpp \
     Piece.cpp \
-    moveup.cpp \
-    MoveRight.cpp \
-    MoveLeft.cpp \
-    MoveDown.cpp
+    Move.cpp
 
 HEADERS += \
     Square.h \
@@ -40,12 +37,9 @@ HEADERS += \
     Attribute.h \
     position.h \
     Piece.h \
-    moveup.h \
     Rule.h \
-    MoveRight.h \
-    MoveLeft.h \
-    MoveDown.h \
-    direction.h
+    direction.h \
+    Move.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

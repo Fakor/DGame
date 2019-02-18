@@ -21,7 +21,15 @@ namespace base {
     }
 
     void Piece::MoveInDirection(){
-        Position move_to(GetPosition().X()+direction_.X(), GetPosition().Y()+direction_.Y());
+        int16_t new_pos_x = GetPosition().X() + direction_.x;
+        int16_t new_pos_y = GetPosition().Y() + direction_.y;
+        if(new_pos_x < 0 || new_pos_y < 0){
+            std::string error = "Position: " + std::to_string(GetPosition().X()) + ", " +
+                                std::to_string(GetPosition().Y()) + " cant move to " +
+                                std::to_string(direction_.x) + ", " + std::to_string(direction_.y);
+            throw std::invalid_argument("");
+        }
+        Position move_to(static_cast<uint16_t>(new_pos_x), static_cast<uint16_t>(new_pos_y));
         SetPosition(move_to);
     }
 

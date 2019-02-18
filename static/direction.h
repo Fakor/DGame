@@ -6,12 +6,20 @@
 #include "position.h"
 
 namespace base{
-    using Direction = const base::Position;
+
+    struct Direction{
+        int16_t x;
+        int16_t y;
+    };
+
     namespace direction{
 
 
-        static Direction NoDirection{0,0};
-        static Direction Up{0,1};
+        static const Direction NoDirection{0,0};
+        static const Direction Up{0,1};
+        static const Direction Down{0, -1};
+        static const Direction Right{1,0};
+        static const Direction Left{-1,0};
     }
 }
 

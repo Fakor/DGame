@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <utility>
+#include <stdexcept>
 
 #include "Attribute.h"
 #include "GridBoard.h"
@@ -29,7 +30,7 @@ namespace base{
         Position pos_;
         std::vector<base::Rule*> rules_;
 
-        base::Position direction_;
+        base::Direction direction_;
 
     };
 }
