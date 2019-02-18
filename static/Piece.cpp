@@ -2,25 +2,31 @@
 
 namespace base {
     Piece::Piece(Attribute attribute, Position start_pos, GridBoard* board)
-        : attribute_{attribute}, board_{board}
+        : attribute_{attribute}, board_{board}, pos_{start_pos}, direction_{direction::NoDirection}
     {
-        SetPosition(start_pos);
+        board_->SetSquareAttribute(start_pos, attribute_);
     }
 
-    void Piece::SetPosition(Position pos){
-        square_ = board_->GetSquarePtr(pos);
-        square_->AddAttribute(attribute_);
+    void Piece::SetPosition(Position new_pos){
+        board_->MoveAttribute(attribute_, GetPosition(), new_pos);
+        pos_ = new_pos;
+    }
+
+    const Position& Piece::GetPosition() const{
+        return pos_;
+    }
+
+    void Piece::SetDirection(const Position& direction){
+        direction_ = direction;
+    }
+
+    void Piece::MoveInDirection(){
+        Position move_to(GetPosition().X()+direction_.X(), GetPosition().Y()+direction_.Y());
+        SetPosition(move_to);
     }
 
     void Piece::AddMoveRule(base::Rule* rule){
         rules_.push_back(rule);
-    }
-
-    void Piece::Move(Position new_pos){
-        if(square_ != nullptr){
-            square_->RemoveAttribute(attribute_);
-        }
-        SetPosition(new_pos);
     }
 
 }

@@ -2,10 +2,13 @@
 #define PIECE_H
 
 #include <vector>
+#include <memory>
+#include <utility>
 
 #include "Attribute.h"
 #include "GridBoard.h"
 #include "position.h"
+#include "direction.h"
 #include "Rule.h"
 
 namespace base{
@@ -14,17 +17,20 @@ namespace base{
     public:
         Piece(Attribute attribute, Position start_pos, GridBoard* board);
 
+        void SetDirection(const Position& direction);
         void AddMoveRule(base::Rule* rule);
 
-        void Move(Position new_pos);
-
+        void MoveInDirection();
+        void SetPosition(Position pos);
+        const Position& GetPosition() const;
     private:
         Attribute attribute_;
         GridBoard* board_;
-        Square* square_{nullptr};
+        Position pos_;
         std::vector<base::Rule*> rules_;
 
-        void SetPosition(Position pos);
+        base::Position direction_;
+
     };
 }
 

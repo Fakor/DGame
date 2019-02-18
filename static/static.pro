@@ -44,7 +44,8 @@ HEADERS += \
     Rule.h \
     MoveRight.h \
     MoveLeft.h \
-    MoveDown.h
+    MoveDown.h \
+    direction.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

@@ -8,6 +8,7 @@
 #include "../static/Attribute.h"
 #include "../static/GridBoard.h"
 #include "../static/Piece.h"
+#include "../static/direction.h"
 
 #include "../static/moveup.h"
 #include "../static/MoveRight.h"
@@ -44,7 +45,7 @@ TEST(BoardTests, MovePiece)
     ASSERT_FALSE(board.SquareHaveAttribute({1,0}, attr));
     ASSERT_FALSE(board.SquareHaveAttribute({1,1}, attr));
 
-    piece.Move({1,0});
+    piece.SetPosition({1,0});
 
     ASSERT_FALSE(board.SquareHaveAttribute({0,0}, attr));
     ASSERT_FALSE(board.SquareHaveAttribute({0,1}, attr));
@@ -119,5 +120,19 @@ TEST(BoardTests, ActionMoveDown){
 
         EXPECT_NE(result, expected_possible_moves.end()) << "This move was not expected (" << possible_move->GetPosition().X() << ", " << possible_move->GetPosition().Y() << ")";
     }
+}
+
+TEST(BoardTests, SetDirection){
+    base::GridBoard board(2,2);
+    base::Attribute attr("p");
+    base::Piece piece(attr, {1,0}, &board);
+
+    piece.SetDirection(base::direction::Up);
+    piece.MoveInDirection();
+
+    ASSERT_FALSE(board.SquareHaveAttribute({0,0}, attr));
+    ASSERT_FALSE(board.SquareHaveAttribute({0,1}, attr));
+    ASSERT_FALSE(board.SquareHaveAttribute({1,0}, attr));
+    ASSERT_TRUE(board.SquareHaveAttribute({1,1}, attr));
 }
 

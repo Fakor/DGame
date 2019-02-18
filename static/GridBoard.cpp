@@ -27,6 +27,11 @@ namespace base {
         }
     }
 
+    void GridBoard::MoveAttribute(Attribute attribute, const Position& from, const Position& to){
+        GetSquare(from).RemoveAttribute(attribute);
+        GetSquare(to).AddAttribute(attribute);
+    }
+
     bool GridBoard::SquareHaveAttribute(const Position& pos, Attribute attribute) {
         PositionWithinBoard(pos);
         return GetSquarePtrUnsfafe(pos)->HaveAttribute(attribute);

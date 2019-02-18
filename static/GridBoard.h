@@ -20,6 +20,8 @@ namespace base {
         bool SquareHaveAttribute(const Position& pos, Attribute attribute);
         void SetAllSquareAttribute(Attribute attribute);
 
+        void MoveAttribute(Attribute attribute, const Position& from, const Position& to);
+
         Square& GetSquare(const Position& pos);
         Square* GetSquarePtr(const Position& pos);
         const std::vector<Square>& GetAllSquares() const;
