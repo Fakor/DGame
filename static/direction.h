@@ -6,9 +6,12 @@
 #include "position.h"
 
 namespace base{
+    using Direction = const base::Position;
     namespace direction{
-        static const base::Position NoDirection{0,0};
-        static const base::Position Up{0,1};
+
+
+        static Direction NoDirection{0,0};
+        static Direction Up{0,1};
     }
 }
 

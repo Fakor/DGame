@@ -16,7 +16,7 @@ namespace base {
         return pos_;
     }
 
-    void Piece::SetDirection(const Position& direction){
+    void Piece::SetDirection(Direction direction){
         direction_ = direction;
     }
 

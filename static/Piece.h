@@ -17,7 +17,7 @@ namespace base{
     public:
         Piece(Attribute attribute, Position start_pos, GridBoard* board);
 
-        void SetDirection(const Position& direction);
+        void SetDirection(Direction direction);
         void AddMoveRule(base::Rule* rule);
 
         void MoveInDirection();
