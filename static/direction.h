@@ -7,9 +7,11 @@
 
 namespace base{
 
-    struct Direction{
+    class Direction{
+    public:
         int16_t x;
         int16_t y;
+        Position AddToPosition(const Position& pos) const { return Position(x+pos.X(), y+pos.Y());}
     };
 
     namespace direction{

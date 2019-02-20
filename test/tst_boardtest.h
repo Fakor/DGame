@@ -29,28 +29,6 @@ TEST(BoardTests, SetupBoard){
     ASSERT_NE(pos1, pos2);
 }
 
-TEST(BoardTests, MovePiece)
-{
-    base::GridBoard board(2,2);
-
-    base::Attribute attr("p");
-
-    base::Piece piece(attr, {0,1}, &board);
-
-    ASSERT_FALSE(board.SquareHaveAttribute({0,0}, attr));
-    ASSERT_TRUE(board.SquareHaveAttribute({0,1}, attr));
-    ASSERT_FALSE(board.SquareHaveAttribute({1,0}, attr));
-    ASSERT_FALSE(board.SquareHaveAttribute({1,1}, attr));
-
-    piece.SetPosition({1,0});
-
-    ASSERT_FALSE(board.SquareHaveAttribute({0,0}, attr));
-    ASSERT_FALSE(board.SquareHaveAttribute({0,1}, attr));
-    ASSERT_TRUE(board.SquareHaveAttribute({1,0}, attr));
-    ASSERT_FALSE(board.SquareHaveAttribute({1,1}, attr));
-
-}
-
 TEST(BoardTests, ActionMoveUp){
     base::GridBoard board(2,5);
 
@@ -119,17 +97,23 @@ TEST(BoardTests, ActionMoveDown){
     }
 }
 
-TEST(BoardTests, SetDirection){
-    base::GridBoard board(2,2);
-    base::Attribute attr("p");
-    base::Piece piece(attr, {1,0}, &board);
+TEST(BoardTests, MovePiecesInDirection){
+    base::GridBoard board(3,4);
+    base::Piece p1;
+    base::Piece p2;
 
-    piece.SetDirection(base::direction::Up);
-    piece.MoveInDirection();
+    board.AddPiece(&p1, {1,2});
+    board.AddPiece(&p2, {0,0});
 
-    ASSERT_FALSE(board.SquareHaveAttribute({0,0}, attr));
-    ASSERT_FALSE(board.SquareHaveAttribute({0,1}, attr));
-    ASSERT_FALSE(board.SquareHaveAttribute({1,0}, attr));
-    ASSERT_TRUE(board.SquareHaveAttribute({1,1}, attr));
+    ASSERT_EQ(base::Position(1,2), board.GetPiecePosition(&p1));
+    ASSERT_EQ(base::Position(0,0), board.GetPiecePosition(&p2));
+
+    p1.SetDirection(base::direction::Up);
+    p2.SetDirection(base::direction::Right);
+
+    board.PerformTurn();
+
+    ASSERT_EQ(base::Position(1,3), board.GetPiecePosition(&p1));
+    ASSERT_EQ(base::Position(1,0), board.GetPiecePosition(&p2));
 }
 

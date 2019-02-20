@@ -1,5 +1,4 @@
-#ifndef RULE_H
-#define RULE_H
+#pragma once
 
 #include <vector>
 
@@ -20,4 +19,3 @@ namespace base {
 
 }
 
-#endif // RULE_H

@@ -1,5 +1,4 @@
-#ifndef MOVEUP_H
-#define MOVEUP_H
+#pragma once
 
 #include <cstdint>
 #include <initializer_list>
@@ -24,4 +23,3 @@ namespace rules{
 
 }
 
-#endif // MOVEUP_H

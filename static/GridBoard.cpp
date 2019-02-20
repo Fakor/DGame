@@ -27,6 +27,14 @@ namespace base {
         }
     }
 
+    void GridBoard::AddPiece(Piece* piece, Position pos){
+        pieces_.insert(std::make_pair(piece, pos));
+    }
+
+    const Position& GridBoard::GetPiecePosition(Piece* piece){
+        return pieces_.at(piece);
+    }
+
     void GridBoard::MoveAttribute(Attribute attribute, const Position& from, const Position& to){
         GetSquare(from).RemoveAttribute(attribute);
         GetSquare(to).AddAttribute(attribute);
@@ -44,6 +52,12 @@ namespace base {
 	int GridBoard::GetHeight() const {
 		return height_;
 	}
+
+    void GridBoard::PerformTurn(){
+        for (auto& piece: pieces_) {
+            piece.second = piece.first->GetDesiredDirection().AddToPosition(piece.second);
+        }
+    }
 
     Square& GridBoard::GetSquare(const Position& pos) {
         PositionWithinBoard(pos);
